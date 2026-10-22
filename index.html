@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Actions Playground</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 50px 20px;
+            transition: 0.4s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            background: white;
+            color: #764ba2;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.06);
+            background: #e0e7ff;
+        }
+
+        #message {
+            margin-top: 25px;
+            font-size: 20px;
+            min-height: 30px;
+        }
+
+        #clock {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .dark-mode {
+            background: #121212;
+            color: #00ff99;
+        }
+
+        .dark-mode .container {
+            background: #222;
+        }
+
+        .dark-mode button {
+            background: #00ff99;
+            color: #121212;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚀 GitHub Actions Playground</h1>
+    <p>Welcome! Explore some cool interactive features.</p>
+
+    <div class="container">
+
+        <h2>🎮 Try These Actions</h2>
+
+        <button onclick="showMessage()">
+            Click Me!
+        </button>
+
+        <button onclick="changeBackground()">
+            🎨 Change Color
+        </button>
+
+        <button onclick="toggleDarkMode()">
+            🌙 Dark Mode
+        </button>
+
+        <button onclick="showDate()">
+            📅 Show Date
+        </button>
+
+        <button onclick="countClicks()">
+            🔥 Click Counter
+        </button>
+
+        <button onclick="runDemo()">
+            ⚡ Run Demo
+        </button>
+
+        <div id="message">Your actions will appear here!</div>
+
+        <div id="clock"></div>
+
+        <p>Total clicks: <span id="counter">0</span></p>
+
+    </div>
+
+    <script>
+        let clicks = 0;
+
+        const colors = [
+            "linear-gradient(135deg, #667eea, #764ba2)",
+            "linear-gradient(135deg, #11998e, #38ef7d)",
+            "linear-gradient(135deg, #fc466b, #3f5efb)",
+            "linear-gradient(135deg, #f7971e, #ffd200)",
+            "linear-gradient(135deg, #2193b0, #6dd5ed)"
+        ];
+
+        function showMessage() {
+            document.getElementById("message").innerText =
+                "🎉 Awesome! Your button works!";
+        }
+
+        function changeBackground() {
+            const color = colors[
+                Math.floor(Math.random() * colors.length)
+            ];
+
+            document.body.style.background = color;
+
+            document.getElementById("message").innerText =
+                "🎨 Background changed successfully!";
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+
+            document.getElementById("message").innerText =
+                "🌙 Theme switched!";
+        }
+
+        function showDate() {
+            document.getElementById("message").innerText =
+                "📅 " + new Date().toLocaleString();
+        }
+
+        function countClicks() {
+            clicks++;
+
+            document.getElementById("counter").innerText = clicks;
+
+            document.getElementById("message").innerText =
+                "🔥 You clicked " + clicks + " times!";
+        }
+
+        function runDemo() {
+            const message = document.getElementById("message");
+
+            message.innerText = "⚡ Running demo...";
+
+            setTimeout(() => {
+                message.innerText =
+                    "✅ Demo completed successfully!";
+            }, 2000);
+        }
+
+        function updateClock() {
+            document.getElementById("clock").innerText =
+                "🕒 " + new Date().toLocaleTimeString();
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>
